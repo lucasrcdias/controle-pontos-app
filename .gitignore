@@ -1,0 +1,4 @@
+src/vendor/assets/bower
+node_modules
+build/
+*.log
