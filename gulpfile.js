@@ -30,7 +30,8 @@ gulp.task('pug', function() {
   return gulp.src(srcPaths.pug)
     .pipe(plumber())
     .pipe(pug())
-    .pipe(gulp.dest(buildPaths.pug));
+    .pipe(gulp.dest(buildPaths.pug))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('stylus', function() {
@@ -43,7 +44,8 @@ gulp.task('stylus', function() {
     .pipe(gcmq())
     .pipe(cssnano())
     .pipe(concat('main.css'))
-    .pipe(gulp.dest(buildPaths.stylus));
+    .pipe(gulp.dest(buildPaths.stylus))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('browser-sync', function() {
