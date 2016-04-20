@@ -1,3 +1,5 @@
 node_modules
-build/
+*.css
+*.html
+src/vendor/
 *.log

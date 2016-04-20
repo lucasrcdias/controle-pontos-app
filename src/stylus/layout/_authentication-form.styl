@@ -1,0 +1,25 @@
+.authentication-in-progress
+  text-align: center
+
+  .backdrop
+    z-index: 2
+    background: rgba(0,0,0,.8)
+    fullscreen(fixed)
+
+  .progress-wrapper
+    width: 80%
+    z-index: 3
+    centered-component(absolute)
+
+    .progress-icon,
+    strong
+      color: #fff
+
+    .progress-icon
+      display: block
+      margin-bottom: 15px
+      font-size: rem(60px)
+
+    strong
+      color: #fff
+      font-size: rem(22px)
