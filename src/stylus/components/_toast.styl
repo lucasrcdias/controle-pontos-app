@@ -1,0 +1,28 @@
+.toast
+  color: #fff
+  max-width: 95%
+  left: rem(10px)
+  position: fixed
+  padding: rem(20px)
+  font-size: rem(14px)
+  transition: .5s all ease
+  border-radius: $default-border-radius
+  box-shadow: 1px 1px 10px rgba(0,0,0,.5)
+
+  &.in
+    bottom: rem(10px)
+
+  &.out
+    bottom: rem(-200px)
+
+  &.success
+    background: $primary-success-color
+    border: 1px solid $secondary-success-color
+
+  &.warning
+    background: $primary-warning-color
+    border: 1px solid $secondary-warning-color
+
+  &.error
+    background: $primary-error-color
+    border: 1px solid $secondary-error-color
