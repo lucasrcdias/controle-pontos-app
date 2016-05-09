@@ -1,0 +1,22 @@
+// Montserrat
+font-face('Montserrat', '/fonts/montserrat-normal', normal, formats: woff)
+font-face('Montserrat', '/fonts/montserrat-bold', bold, formats: woff)
+
+// Open Sans
+font-face('Open Sans', '/fonts/open-sans-light', thin, formats: woff2)
+font-face('Open Sans', '/fonts/open-sans-normal', normal, formats: woff2)
+font-face('Open Sans', '/fonts/open-sans-bold', bold, formats: woff2)
+
+// Fontawesome icons
+@import 'fa-stylus'
+
+// Import only used icons
+.{$fa-css-prefix}
+  for $icon in $used-icons
+    &-{$icon}
+      fa-icon $icon
+
+body
+  color: $text-color
+  font-weight: 400
+  font-family: 'Montserrat', sans-serif
