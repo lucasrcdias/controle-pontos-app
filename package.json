@@ -24,6 +24,7 @@
   "homepage": "https://github.com/lucasrcdias/controle-pontos-app#readme",
   "devDependencies": {
     "autoprefixer-stylus": "^0.9.2",
+    "browser-sync": "^2.12.5",
     "fa-stylus": "^0.1.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -36,6 +37,7 @@
     "gulp-uglify": "^1.5.3",
     "kouto-swiss": "^0.12.0",
     "main-bower-files": "^2.13.0",
-    "pug": "^2.0.0-alpha3"
+    "pug": "^2.0.0-alpha3",
+    "run-sequence": "^1.1.5"
   }
 }
