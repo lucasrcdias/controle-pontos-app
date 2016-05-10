@@ -4,7 +4,8 @@
   function AuthRoutes($stateProvider) {
     $stateProvider.state('auth', {
       url: '/auth',
-      templateUrl: 'auth.html'
+      templateUrl: 'auth.html',
+      controller: 'AuthCtrl'
     });
   }
 })();
