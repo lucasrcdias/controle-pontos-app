@@ -56,12 +56,14 @@ gulp.task('stylus', function() {
 });
 
 gulp.task('js', function() {
-  return gulp.src(srcPaths.js)
+  gulp.src(srcPaths.js)
     .pipe(plumber())
     .pipe(uglify())
     .pipe(concat('index.min.js'))
     .pipe(gulp.dest(buildPaths.js))
     .pipe(browserSync.stream());
+
+  return gulp.start('inject-js');
 });
 
 gulp.task('inject-js', function() {
