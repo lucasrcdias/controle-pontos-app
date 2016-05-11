@@ -8,7 +8,6 @@
 
     $scope.authUser = function (user) {
       $scope.authenticating = true;
-      console.log(user);
 
       $timeout(function() {
         $scope.authenticating = false;
