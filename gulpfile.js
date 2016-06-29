@@ -14,7 +14,7 @@ var srcPaths = {
 };
 
 var buildPaths = {
-  build: 'www/**/*',
+  build: 'www/',
   css: 'www/css/'
 };
 
@@ -39,9 +39,17 @@ gulp.task('browser-sync', function() {
   ];
 
   browserSync.init(files, {
+    port: '9000',
     server: {
-      baseDir: './build/'
+      baseDir: buildPaths.build,
+      routes: {
+        "/plugins": "plugins"
+      }
     },
+    socket: {
+      port: '9000',
+      domain: 'localhost:9000'
+    }
   });
 });
 
