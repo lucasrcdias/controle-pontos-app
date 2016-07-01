@@ -10,6 +10,7 @@
     /* Vendors modules */
     'ngLodash',
     'ui.router',
-    'ui.mask'
+    'ui.mask',
+    'ngCordova'
   ]);
 })();
