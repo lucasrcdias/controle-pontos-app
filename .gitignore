@@ -1,6 +1,5 @@
 node_modules
 www/bower_components
 www/**/*.css
-www/**/*.js
 *.log
 plugins/

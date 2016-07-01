@@ -6,8 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="meta desc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/index.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body>
+    <im-navbar></im-navbar>
+    <div ui-view></div>
+
+    <!-- Dependencies -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>
+    <script src="bower_components/angular-ui-mask/dist/mask.min.js"></script>
+
+    <!-- services -->
+    <script src="js/services/app.services.js"></script>
+    <!-- directives -->
+    <script src="js/directives/app.directives.js"></script>
+    <script src="js/directives/navbar.directive.js"></script>
+    <!-- controllers -->
+    <script src="js/controllers/app.controllers.js"></script>
+    <script src="js/controllers/point.controller.js"></script>
+    <script src="js/controllers/auth.controller.js"></script>
+    <!-- core -->
+    <script src="js/core/app.core.js"></script>
+    <script src="js/core/router-helper.provider.js"></script>
+    <!-- routes -->
+    <script src="js/routes/app.routes.js"></script>
+    <script src="js/routes/imperium.routes.js"></script>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
