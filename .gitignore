@@ -1,5 +1,7 @@
 node_modules
+platforms/browser
 www/bower_components
+www/cordova.js
 www/**/*.css
 *.log
 plugins/
