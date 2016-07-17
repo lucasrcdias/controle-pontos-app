@@ -12,9 +12,7 @@
   },
   "keywords": [
     "js",
-    "stylus",
-    "gulp",
-    "pug"
+    "gulp"
   ],
   "author": "Lucas Ramos",
   "license": "ISC",
