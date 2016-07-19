@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation">
+<nav class="navbar" role="navigation" ng-if="vm.isAuthenticated">
   <div class="container">
     <ul class="navbar-wrapper">
       <li class="navbar-item navbar-icons">
@@ -8,7 +8,7 @@
         <h1 class="app-title">Imperium</h1>
       </li>
       <li class="navbar-item navbar-icons">
-        <a ui-sref="auth"><i class="fa fa-sign-out navbar-icon"></i></a>
+        <button ng-click="vm.signOut()"><i class="fa fa-sign-out navbar-icon"></i></button>
       </li>
     </ul>
   </div>
