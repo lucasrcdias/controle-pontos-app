@@ -8,7 +8,7 @@ function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvi
   this.$get = RouterHelper;
 
   $locationProvider.html5Mode({
-    enabled: true,
+    enabled: false,
     requireBase: false
   });
 
