@@ -3,9 +3,9 @@
     .module("app.controllers")
     .controller("authCtrl", authCtrl);
 
-  authCtrl.$inject = ["$timeout"];
+  authCtrl.$inject = ["$timeout", "$rootScope", "$state"];
 
-  function authCtrl($timeout) {
+  function authCtrl($timeout, $rootScope, $state) {
     var vm = this;
 
     vm.user = {};
@@ -17,12 +17,11 @@
 
       $timeout(function() {
         vm.authenticating = false;
-      }, 1000);
 
-      // userService.authenticate(user)
-      //   .then(onSuccess)
-      //   .catch(onFail)
-      //   .finally(removeBackdrop);
+        $rootScope.$emit("authChanged", true);
+        $state.go("point");
+
+      }, 1000);
     };
 
     function onSuccess(response) {
