@@ -6,23 +6,32 @@
     <form name="vm.userForm" ng-submit="vm.authenticate(vm.user)">
       <div class="form-group" ng-class="{ 'has-error' : vm.user.errors.email && !vm.userForm.email.$dirty }">
         <input class="form-control" type="text" name="email" ng-required="true" ng-model="vm.user.email"/>
-        <label class="form-label" for="email">Email</label>
-        <span class="form-error">{{ vm.user.errors.email }}</span>
+        <label class="form-label" for="email">Email *</label>
+        <div ng-messages="vm.userForm.email.$error" ng-show="vm.userForm.email.$dirty">
+          <span class="form-error" ng-message="required">Esse campo é obrigatório</span>
+        </div>
       </div>
       <div class="form-group" ng-class="{ 'has-error' : vm.user.errors.password && !vm.userForm.password.$dirty }">
         <input class="form-control" type="password" name="password" ng-required="true" ng-minlength="6" ng-model="vm.user.password"/>
-        <label class="form-label" for="password">Senha</label>
-        <span class="form-error">{{ vm.user.errors.password }}</span>
+        <label class="form-label" for="password">Senha *</label>
+        <div ng-messages="vm.userForm.password.$error" ng-show="vm.userForm.password.$dirty">
+          <span class="form-error" ng-message="required">Esse campo é obrigatório</span>
+          <span class="form-error" ng-message="minlength">A senha deve ter no mínimo 6 caracteres</span>
+        </div>
       </div>
+
+      <span class="form-error" ng-show="vm.user.error">{{ vm.user.error }}</span>
+
       <div class="form-action">
         <button class="btn btn-primary" type="submit" ng-disabled="vm.userForm.$invalid">ENTRAR</button>
       </div>
     </form>
   </main>
   <footer class="form-footer">
-    <a class="form-link" href="#">Esqueceu a senha?</a>
+    <a class="form-link" href="#" onclick="window.open('http://www.imperium.com.br/recuperar-senha', '_system');">Esqueceu a senha?</a>
   </footer>
 </section>
+
 <section class="authentication-in-progress" ng-show="vm.authenticating">
   <div class="backdrop"></div>
   <div class="progress-wrapper">
