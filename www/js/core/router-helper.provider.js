@@ -12,6 +12,8 @@ function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvi
     requireBase: false
   });
 
+  $urlRouterProvider.when("", "/#/");
+
   RouterHelper.$inject = ['$state'];
 
   function RouterHelper($state) {

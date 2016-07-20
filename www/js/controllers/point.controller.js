@@ -3,20 +3,24 @@
     .module("app.controllers")
     .controller("pointCtrl", pointCtrl);
 
-  pointCtrl.$inject = ["pointService"];
+  pointCtrl.$inject = ["pointService", "pointValidator"];
 
-  function pointCtrl(pointService) {
+  function pointCtrl(pointService, pointValidator) {
     var vm = this;
 
     vm.setPoint = setPoint;
 
     function setPoint() {
-      pointService.setPoint()
+      if (pointValidator.validateMaximumPoints()){
+        pointService.setPoint()
         .then(onSuccess)
         .catch(onFail);
+      }
     };
 
     function onSuccess(response) {
+      pointValidator.incrementPoint();
+
       vm.coordinates = {
         'latitude': response.coords.latitude,
         'longitude': response.coords.longitude
