@@ -12,9 +12,9 @@
       bindToController: true
     };
 
-    imNavbarCtrl.$inject = ["$rootScope", "$state"];
+    imNavbarCtrl.$inject = ["$rootScope", "$state", "$auth"];
 
-    function imNavbarCtrl($rootScope, $state) {
+    function imNavbarCtrl($rootScope, $state, $auth) {
       var vm = this;
 
       vm.isAuthenticated = false;
@@ -28,6 +28,7 @@
       };
 
       function signOut() {
+        $auth.logout();
         $rootScope.$emit("authChanged", false);
         $state.go("auth");
       };

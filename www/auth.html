@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <span class="form-error" ng-show="vm.user.error">{{ vm.user.error }}</span>
+      <span class="form-error centered" ng-show="vm.user.errors">{{ vm.user.errors }}</span>
 
       <div class="form-action">
         <button class="btn btn-primary" type="submit" ng-disabled="vm.userForm.$invalid">ENTRAR</button>
@@ -32,7 +32,7 @@
   </footer>
 </section>
 
-<section class="authentication-in-progress" ng-show="vm.authenticating">
+<section class="in-progress" ng-show="vm.authenticating">
   <div class="backdrop"></div>
   <div class="progress-wrapper">
     <i class="fa fa-circle-o-notch fa-spin progress-icon"></i><strong>Autenticando, aguarde...</strong>

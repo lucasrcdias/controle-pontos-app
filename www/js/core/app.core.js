@@ -1,16 +1,14 @@
 (function() {
   angular.module('app.core', [
-    /* Angular modules */
     'ngTouch',
     'ngSanitize',
     'ngMessages',
     'ngAria',
-
-    /* Reusable modules */
-    /* Vendors modules */
+    'environment',
     'ngLodash',
     'ui.router',
     'ui.mask',
-    'ngCordova'
+    'ngCordova',
+    'satellizer'
   ]);
 })();

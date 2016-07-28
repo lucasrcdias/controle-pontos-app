@@ -14,7 +14,8 @@
       {
         state: 'point',
         config: {
-          url: '/',
+          url: '/point',
+          parent: "auth",
           templateUrl: 'point.html',
           controller: 'pointCtrl',
           controllerAs: 'vm'

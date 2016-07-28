@@ -3,37 +3,46 @@
     .module("app.controllers")
     .controller("authCtrl", authCtrl);
 
-  authCtrl.$inject = ["$timeout", "$rootScope", "$state"];
+  authCtrl.$inject = ["$auth", "$rootScope", "$state"];
 
-  function authCtrl($timeout, $rootScope, $state) {
+  function authCtrl($auth, $rootScope, $state) {
     var vm = this;
 
     vm.user = {};
 
     vm.authenticate = authenticate;
 
+    verifyUserAuthentication();
+
     function authenticate(user) {
       vm.authenticating = true;
 
-      $timeout(function() {
-        vm.authenticating = false;
-
-        $rootScope.$emit("authChanged", true);
-        $state.go("point");
-
-      }, 1000);
+      $auth.login({ 'user': user })
+        .then(onSuccess)
+        .catch(onFailure)
+        .finally(removeBackdrop);
     };
 
     function onSuccess(response) {
-      console.log(response);
+      $rootScope.$emit("authChanged", true);
+      $state.go("point");
     };
 
-    function onFail(error) {
-      console.log(error);
+    function onFailure(error) {
+      vm.user.password = "";
+      vm.userForm.password.$setPristine();
+      $rootScope.$emit("authChanged", false);
+      vm.user.errors = error.data.user.errors;
     };
 
     function removeBackdrop() {
       vm.authenticating = false;
+    };
+
+    function verifyUserAuthentication() {
+      if ($auth.isAuthenticated()) {
+        $state.go("point");
+      }
     };
   };
 })();

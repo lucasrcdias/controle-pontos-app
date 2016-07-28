@@ -10,7 +10,9 @@
     "angular-ui-router": "^0.2.18",
     "ng-lodash": "^0.5.0",
     "angular-ui-mask": "^1.8.6",
-    "ngCordova": "^0.1.26-alpha"
+    "ngCordova": "^0.1.26-alpha",
+    "satellizer": "^0.15.4",
+    "angular-environment": "^1.0.4"
   },
   "resolutions": {
     "angular": "^1.0.8"

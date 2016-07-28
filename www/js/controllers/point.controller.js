@@ -3,12 +3,16 @@
     .module("app.controllers")
     .controller("pointCtrl", pointCtrl);
 
-  pointCtrl.$inject = ["pointService", "pointValidator"];
+  pointCtrl.$inject = ["pointService", "pointValidator", "$auth", "$state"];
 
-  function pointCtrl(pointService, pointValidator) {
+  function pointCtrl(pointService, pointValidator, $auth, $state) {
     var vm = this;
 
+    vm.authenticating = true;
+
     vm.setPoint = setPoint;
+
+    verifyUserAuthentication();
 
     function setPoint() {
       if (pointValidator.validateMaximumPoints()){
@@ -29,6 +33,15 @@
 
     function onFail(error) {
       console.log(error);
+    };
+
+    function verifyUserAuthentication() {
+      debugger;
+      if ($auth.isAuthenticated()) {
+        vm.authenticating = false;
+      } else {
+        $state.go("auth");
+      }
     };
   };
 })();
