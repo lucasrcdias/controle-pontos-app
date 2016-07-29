@@ -36,7 +36,6 @@
     };
 
     function verifyUserAuthentication() {
-      debugger;
       if ($auth.isAuthenticated()) {
         vm.authenticating = false;
       } else {
