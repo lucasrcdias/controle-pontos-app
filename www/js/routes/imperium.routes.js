@@ -1,35 +1,27 @@
 (function() {
   angular
-  .module('app.routes')
-  .run(appRun);
+    .module('app.routes')
+    .config(imperiumRoutes);
 
-  appRun.$inject = ['routerHelper'];
+  imperiumRoutes.$inject = ["$stateProvider", "$urlRouterProvider"];
 
-  function appRun(routerHelper) {
-    routerHelper.configureStates(getStates());
-  };
+  function imperiumRoutes($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/point");
 
-  function getStates() {
-    return [
-      {
-        state: 'point',
-        config: {
-          url: '/point',
-          parent: "auth",
-          templateUrl: 'point.html',
-          controller: 'pointCtrl',
-          controllerAs: 'vm'
-        }
-      },
-      {
-        state: 'auth',
-        config: {
-          url: '/auth',
-          templateUrl: 'auth.html',
-          controller: 'authCtrl',
-          controllerAs: 'vm'
-        }
-      }
-    ];
+    $stateProvider
+      .state("point", {
+        url: "/point",
+        templateUrl: "point.html",
+        controller: "pointCtrl",
+        controllerAs: "vm",
+        bindToController: true
+      })
+      .state("auth", {
+        url: "/auth",
+        templateUrl: "auth.html",
+        controller: "authCtrl",
+        controllerAs: "vm",
+        bindToController: true
+      });
   };
 })();
