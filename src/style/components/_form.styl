@@ -1,0 +1,87 @@
+.form
+  width: 90%
+  centered-component(absolute)
+
+.form-header,
+.form-footer
+  text-align: center
+
+.form-header
+  margin-bottom: rem(30px)
+
+.form-title
+  color: $primary-color
+  font-size: rem(32px)
+
+.form-group
+  position: relative
+  margin-bottom: rem(30px)
+  font-family: 'Open Sans', sans-serif
+
+  &.has-error
+    .form-label
+      top: 0
+      color: $primary-error-color
+
+    .form-control
+      border-color: $primary-error-color
+
+.form-label,
+.form-control
+  font-weight: 600
+
+.form-label
+  left: 0
+  top: 25px
+  cursor: text
+  position: absolute
+  font-size: rem(14px)
+  pointer-events: none
+  transition: .3s all ease
+  transform: translateY(-50%)
+
+.form-control
+  width: 100%
+  height: 50px
+  border: none
+  background: #fff
+  font-size: rem(12px)
+  padding: rem(15px 0)
+  border-bottom: 1px solid $text-color
+
+  &:-webkit-autofill
+    background: #fff
+
+  &:active,
+  &:focus,
+  &:valid
+    outline: none
+    border-color: $secondary-color
+
+    &+ label
+      top: 0
+      font-size: rem(12px)
+      color: $secondary-color
+
+.form-error
+  display: block
+  font-weight: 600
+  font-size: rem(12px)
+  margin-top: rem(10px)
+  color: $primary-error-color
+
+  &.centered
+    text-align: center
+
+.form-footer
+  margin-top: rem(30px)
+
+.form-link
+  display: block
+  font-weight: 600
+  font-size: rem(16px)
+  text-decoration: none
+  color: $primary-color
+
+.form-action
+  margin-top: rem(30px)

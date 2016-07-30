@@ -1,5 +1,7 @@
 node_modules
-*.css
-*.html
-src/vendor/
+platforms/browser
+www/bower_components
+www/cordova.js
+www/**/*.css
 *.log
+plugins/
