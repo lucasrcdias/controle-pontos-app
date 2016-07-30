@@ -11,7 +11,7 @@
 
     $authProvider.tokenPrefix = '';
     $authProvider.tokenRoot   = 'user';
-    $authProvider.tokenName   = 'auth_token';
+    $authProvider.tokenName   = 'jwt_token';
 
     $authProvider.loginUrl = apiURL + '/login';
   };
