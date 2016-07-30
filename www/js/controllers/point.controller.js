@@ -3,9 +3,9 @@
     .module("app.controllers")
     .controller("pointCtrl", pointCtrl);
 
-  pointCtrl.$inject = ["pointService", "pointValidator", "$auth", "$state"];
+  pointCtrl.$inject = ["navbarService", "pointService", "pointValidator", "$auth", "$state"];
 
-  function pointCtrl(pointService, pointValidator, $auth, $state) {
+  function pointCtrl(navbarService, pointService, pointValidator, $auth, $state) {
     var vm = this;
 
     vm.authenticating = true;
@@ -38,6 +38,7 @@
     function verifyUserAuthentication() {
       if ($auth.isAuthenticated()) {
         vm.authenticating = false;
+        navbarService.updateAuthState(true);
       } else {
         $state.go("auth");
       }

@@ -3,9 +3,9 @@
     .module("app.controllers")
     .controller("authCtrl", authCtrl);
 
-  authCtrl.$inject = ["$auth", "$rootScope", "$state"];
+  authCtrl.$inject = ["$auth", "$state", "navbarService"];
 
-  function authCtrl($auth, $rootScope, $state) {
+  function authCtrl($auth, $state, navbarService) {
     var vm = this;
 
     vm.user = {};
@@ -24,15 +24,16 @@
     };
 
     function onSuccess(response) {
-      $rootScope.$emit("authChanged", true);
+      navbarService.updateAuthState(true);
       $state.go("point");
     };
 
     function onFailure(error) {
       vm.user.password = "";
-      vm.userForm.password.$setPristine();
-      $rootScope.$emit("authChanged", false);
-      vm.user.errors = error.data.user.errors;
+      vm.user.errors   = error.data.user.errors;
+
+      vm.userForm.$setPristine();
+      navbarService.updateAuthState(false);
     };
 
     function removeBackdrop() {
