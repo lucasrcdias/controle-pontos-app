@@ -3,9 +3,9 @@
     .module("app.controllers")
     .controller("authCtrl", authCtrl);
 
-  authCtrl.$inject = ["$auth", "$state", "navbarService"];
+  authCtrl.$inject = ["$auth", "$state", "navbarService", "periodService"];
 
-  function authCtrl($auth, $state, navbarService) {
+  function authCtrl($auth, $state, navbarService, periodService) {
     var vm = this;
 
     vm.user = {};
@@ -25,6 +25,7 @@
 
     function onSuccess(response) {
       navbarService.updateAuthState(true);
+      periodService.loadPeriod();
       $state.go("point");
     };
 

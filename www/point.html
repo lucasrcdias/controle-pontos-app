@@ -1,10 +1,18 @@
 <div class="next-point-wrapper">
   <div class="container">
-    <h2 class="next-point">PRÓXIMO PONTO</h2>
-    <h1 class="next-point-time"><strong>17:30</strong></h1>
+    <div ng-show="vm.nextPoint">
+      <h1 class="next-point">PRÓXIMO PONTO</h1>
+      <h2 class="next-point-time">
+        <strong>{{ vm.nextPoint }}</strong>
+      </h2>
+    </div>
+
+    <h3 ng-show="!vm.nextPoint">
+      Acabaram os pontos por hoje!
+    </h3>
   </div>
 </div>
-<button class="btn-main-action waiting" ng-click="vm.setPoint()"><i class="fa fa-plus btn-icon"></i></button>
+<button class="btn-main-action waiting" ng-click="vm.setPoint()" ng-if="vm.nextPoint"><i class="fa fa-plus btn-icon"></i></button>
 
 <section class="in-progress" ng-show="vm.authenticating">
   <div class="backdrop"></div>
