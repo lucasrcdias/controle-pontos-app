@@ -14,7 +14,7 @@
       templates: {
         toast: "js/directives/toast/toast.html"
       },
-      preventDuplicates: true
+      preventOpenDuplicates: true
     });
   };
 })();
