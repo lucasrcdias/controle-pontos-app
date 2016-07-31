@@ -9,6 +9,7 @@
     'ui.router',
     'ui.mask',
     'ngCordova',
-    'satellizer'
+    'satellizer',
+    'toastr'
   ]);
 })();
