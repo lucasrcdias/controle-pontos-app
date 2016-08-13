@@ -5,11 +5,11 @@
     </feature>
     <name>Imperium</name>
     <description>
-        Imperium - Controle de pontos trabalhistas descomplicado.
-    </description>
+    Imperium - Controle de pontos trabalhistas descomplicado.
+  </description>
     <author email="dev@imperium.io" href="http://imperium.io">
-        Imperium Dev Team
-    </author>
+    Imperium Dev Team
+  </author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -19,5 +19,11 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/android/ldpi.png" />
+    <icon density="mdpi" src="res/android/mdpi.png" />
+    <icon density="hdpi" src="res/android/hdpi.png" />
+    <icon density="xhdpi" src="res/android/xhdpi.png" />
+    <icon density="xxhdpi" src="res/android/xxhdpi.png" />
+    <icon density="xxxhdpi" src="res/android/xxxhdpi.png" />
     <preference name="loglevel" value="DEBUG" />
 </widget>
