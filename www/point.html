@@ -7,7 +7,7 @@
       </h2>
     </div>
 
-    <h3 ng-show="!vm.nextPoint">Acabaram os pontos por hoje!</h3>
+    <h3 ng-show="!vm.nextPoint && vm.connected">Acabaram os pontos por hoje!</h3>
     <h3 ng-hide="vm.connected">Sem conexão com a internet...</h3>
   </div>
 </div>

@@ -9,7 +9,7 @@
     var vm = this;
 
     vm.user      = {};
-    vm.connected = false;
+    vm.connected = navigator.connection.type !== "none";
 
     vm.authenticate = authenticate;
 
@@ -51,7 +51,6 @@
     };
 
     function updateConnectionStatus(event, isConnected) {
-      console.log(isConnected);
       vm.connected = isConnected;
     };
   };

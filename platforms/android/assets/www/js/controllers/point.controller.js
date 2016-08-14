@@ -10,7 +10,7 @@
     var breakpoints = ["start_at", "interval_start", "interval_finish", "finish_at"];
 
     vm.saving         = false;
-    vm.connected      = false;
+    vm.connected      = navigator.connection.type !== "none";
     vm.authenticating = true;
 
     vm.setPoint = setPoint;
