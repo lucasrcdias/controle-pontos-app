@@ -51,6 +51,7 @@
     };
 
     function updateConnectionStatus(event, isConnected) {
+      console.log(isConnected);
       vm.connected = isConnected;
     };
   };

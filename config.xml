@@ -1,76 +1,64 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.imperium" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Imperium</name>
-  <description>
+    <name>Imperium</name>
+    <description>
     Imperium - Controle de pontos trabalhistas descomplicado.
   </description>
-  <author email="dev@imperium.io" href="http://imperium.io">
+    <author email="dev@imperium.io" href="http://imperium.io">
     Imperium Dev Team
   </author>
-  <content src="index.html" />
-  <plugin name="cordova-plugin-whitelist" spec="1" />
-  <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
-  <access origin="*" />
-  <allow-intent href="http://*/*" />
-  <allow-intent href="https://*/*" />
-  <allow-intent href="tel:*" />
-  <allow-intent href="sms:*" />
-  <allow-intent href="mailto:*" />
-  <allow-intent href="geo:*" />
-  <platform name="android">
-    <allow-intent href="market:*" />
-    <!-- Icons -->
-    <icon src="res/android/ldpi.png" density="ldpi" />
-    <icon src="res/android/mdpi.png" density="mdpi" />
-    <icon src="res/android/hdpi.png" density="hdpi" />
-    <icon src="res/android/xhdpi.png" density="xhdpi" />
-    <icon src="res/android/xxhdpi.png" density="xxhdpi" />
-    <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
-  </platform>
-  <platform name="ios">
-    <allow-intent href="itms:*" />
-    <allow-intent href="itms-apps:*" />
-    <!-- Icons -->
-    <!-- iOS 8.0+ -->
-    <!-- iPhone 6 Plus  -->
-    <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
-    <!-- iOS 7.0+ -->
-    <!-- iPhone / iPod Touch  -->
-    <icon src="res/ios/icon-60.png" width="60" height="60" />
-    <icon src="res/ios/icon-60@2x.png" width="120" height="120" />
-    <!-- iPad -->
-    <icon src="res/ios/icon-76.png" width="76" height="76" />
-    <icon src="res/ios/icon-76@2x.png" width="152" height="152" />
-    <!-- iOS 6.1 -->
-    <!-- Spotlight Icon -->
-    <icon src="res/ios/icon-40.png" width="40" height="40" />
-    <icon src="res/ios/icon-40@2x.png" width="80" height="80" />
-    <!-- iPhone / iPod Touch -->
-    <icon src="res/ios/icon.png" width="57" height="57" />
-    <icon src="res/ios/icon@2x.png" width="114" height="114" />
-    <!-- iPad -->
-    <icon src="res/ios/icon-72.png" width="72" height="72" />
-    <icon src="res/ios/icon-72@2x.png" width="144" height="144" />
-    <!-- iPhone Spotlight and Settings Icon -->
-    <icon src="res/ios/icon-small.png" width="29" height="29" />
-    <icon src="res/ios/icon-small@2x.png" width="58" height="58" />
-    <!-- iPad Spotlight and Settings Icon -->
-    <icon src="res/ios/icon-50.png" width="50" height="50" />
-    <icon src="res/ios/icon-50@2x.png" width="100" height="100" />
-  </platform>
-  <platform name="windows">
-    <icon src="res/windows/storelogo.png" target="StoreLogo" />
-    <icon src="res/windows/smalllogo.png" target="Square30x30Logo" />
-    <icon src="res/Windows/Square44x44Logo.png" target="Square44x44Logo" />
-    <icon src="res/Windows/Square70x70Logo.png" target="Square70x70Logo" />
-    <icon src="res/Windows/Square71x71Logo.png" target="Square71x71Logo" />
-    <icon src="res/Windows/Square150x150Logo.png" target="Square150x150Logo" />
-    <icon src="res/Windows/Square310x310Logo.png" target="Square310x310Logo" />
-    <icon src="res/Windows/Wide310x150Logo.png" target="Wide310x150Logo" />
-  </platform>
-  <platform name="wp8">
-    <icon src="res/wp/ApplicationIcon.png" width="99" height="99" />
-    <!-- tile image -->
-    <icon src="res/wp/Background.png" width="159" height="159" />
-  </platform>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.2.0" />
+    <plugin name="cordova-plugin-network-information" spec="~1.2.1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/android/ldpi.png" />
+        <icon density="mdpi" src="res/android/mdpi.png" />
+        <icon density="hdpi" src="res/android/hdpi.png" />
+        <icon density="xhdpi" src="res/android/xhdpi.png" />
+        <icon density="xxhdpi" src="res/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/android/xxxhdpi.png" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/ios/icon.png" width="57" />
+        <icon height="114" src="res/ios/icon@2x.png" width="114" />
+        <icon height="72" src="res/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/ios/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/ios/icon-small@2x.png" width="58" />
+        <icon height="50" src="res/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/ios/icon-50@2x.png" width="100" />
+    </platform>
+    <platform name="windows">
+        <icon src="res/windows/storelogo.png" target="StoreLogo" />
+        <icon src="res/windows/smalllogo.png" target="Square30x30Logo" />
+        <icon src="res/Windows/Square44x44Logo.png" target="Square44x44Logo" />
+        <icon src="res/Windows/Square70x70Logo.png" target="Square70x70Logo" />
+        <icon src="res/Windows/Square71x71Logo.png" target="Square71x71Logo" />
+        <icon src="res/Windows/Square150x150Logo.png" target="Square150x150Logo" />
+        <icon src="res/Windows/Square310x310Logo.png" target="Square310x310Logo" />
+        <icon src="res/Windows/Wide310x150Logo.png" target="Wide310x150Logo" />
+    </platform>
+    <platform name="wp8">
+        <icon height="99" src="res/wp/ApplicationIcon.png" width="99" />
+        <icon height="159" src="res/wp/Background.png" width="159" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
 </widget>

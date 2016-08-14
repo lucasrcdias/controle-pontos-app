@@ -8,7 +8,9 @@
       networkChanged();
 
       function networkChanged() {
-        $rootScope.$emit("networkChanged", navigator.connection.type !== Connection.NONE);
+        console.log("changed...");
+        console.log(navigator.connection.type);
+        $rootScope.$emit("networkChanged", navigator.connection.type !== "none");
       };
     });
 })();
