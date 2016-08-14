@@ -3,16 +3,19 @@
     .module("app.controllers")
     .controller("authCtrl", authCtrl);
 
-  authCtrl.$inject = ["$auth", "$state", "navbarService", "periodService"];
+  authCtrl.$inject = ["$rootScope", "$auth", "$state", "navbarService", "periodService"];
 
-  function authCtrl($auth, $state, navbarService, periodService) {
+  function authCtrl($rootScope, $auth, $state, navbarService, periodService) {
     var vm = this;
 
-    vm.user = {};
+    vm.user      = {};
+    vm.connected = false;
 
     vm.authenticate = authenticate;
 
     verifyUserAuthentication();
+
+    $rootScope.$on("networkChanged", updateConnectionStatus);
 
     function authenticate(user) {
       vm.authenticating = true;
@@ -45,6 +48,10 @@
       if ($auth.isAuthenticated()) {
         $state.go("point");
       }
+    };
+
+    function updateConnectionStatus(event, isConnected) {
+      vm.connected = isConnected;
     };
   };
 })();

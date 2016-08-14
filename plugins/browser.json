@@ -7,22 +7,19 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "io.imperium"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.imperium"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "io.imperium"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.imperium"
         }
     }
 }

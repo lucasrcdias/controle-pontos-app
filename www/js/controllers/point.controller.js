@@ -3,19 +3,22 @@
     .module("app.controllers")
     .controller("pointCtrl", pointCtrl);
 
-  pointCtrl.$inject = ["navbarService", "pointService", "pointValidator", "$auth", "$state", "toastr"];
+  pointCtrl.$inject = ["navbarService", "pointService", "pointValidator", "$auth", "$state", "$rootScope", "toastr"];
 
-  function pointCtrl(navbarService, pointService, pointValidator, $auth, $state, toastr) {
+  function pointCtrl(navbarService, pointService, pointValidator, $auth, $state, $rootScope, toastr) {
     var vm          = this;
     var breakpoints = ["start_at", "interval_start", "interval_finish", "finish_at"];
 
     vm.saving         = false;
+    vm.connected      = false;
     vm.authenticating = true;
 
     vm.setPoint = setPoint;
 
     verifyUserAuthentication();
     loadNextPoint();
+
+    $rootScope.$on("networkChanged", updateConnectionStatus);
 
     function setPoint() {
       if (!vm.saving) {
@@ -103,6 +106,10 @@
       hour         = hour.toString().length === 1 ? "0" + hour : hour;
 
       vm.nextPoint = hour + ":" + minutes;
+    };
+
+    function updateConnectionStatus(event, isConnected) {
+      vm.connected = isConnected;
     };
   };
 })();

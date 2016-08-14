@@ -4,41 +4,16 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {
-            "res/xml/config.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-                            "count": 1
-                        }
-                    ]
-                }
-            }
-        }
+        "files": {}
     },
     "installed_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.imperium"
         }
     },
     "dependent_plugins": {},
-    "modules": [
-        {
-            "id": "cordova-plugin-inappbrowser.inappbrowser",
-            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-            "pluginId": "cordova-plugin-inappbrowser",
-            "clobbers": [
-                "cordova.InAppBrowser.open",
-                "window.open"
-            ]
-        }
-    ],
+    "modules": [],
     "plugin_metadata": {
-        "cordova-plugin-compat": "1.0.0",
-        "cordova-plugin-inappbrowser": "1.4.0"
+        "cordova-plugin-compat": "1.0.0"
     }
 }

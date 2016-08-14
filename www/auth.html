@@ -28,13 +28,14 @@
     </form>
   </main>
   <footer class="form-footer">
-    <a class="form-link" href="#" onclick="window.open('http://www.imperium.com.br/recuperar-senha', '_system');">Esqueceu a senha?</a>
+    <a class="form-link" href="#" onclick="window.open('http://imperium.herokuapp.com/recuperar-senha', '_system');">Esqueceu a senha?</a>
   </footer>
 </section>
 
-<section class="in-progress" ng-show="vm.authenticating">
+<section class="in-progress" ng-show="vm.authenticating || !vm.connected">
   <div class="backdrop"></div>
   <div class="progress-wrapper">
-    <strong>Autenticando, aguarde...</strong>
+    <strong ng-show="vm.connected">Autenticando, aguarde...</strong>
+    <strong ng-hide="vm.connected">Sem conexão com a internet</strong>
   </div>
 </section>
