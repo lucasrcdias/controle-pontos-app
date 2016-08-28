@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var stylus = require('gulp-stylus');
-var fastylus = require('fa-stylus');
 var cssnano = require('gulp-cssnano');
 var koutoSwiss = require('kouto-swiss');
 var prefixer = require('autoprefixer-stylus');
@@ -22,7 +21,7 @@ gulp.task('css', function() {
   gulp.src(srcPaths.mainStyl)
     .pipe(plumber())
     .pipe(stylus({
-      use: [koutoSwiss(), prefixer(), fastylus()],
+      use: [koutoSwiss(), prefixer()],
       compress: true
     }))
     .pipe(cssnano())
