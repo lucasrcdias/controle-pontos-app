@@ -12,18 +12,18 @@
 
     return service;
 
-    function setPoint() {
-      return getUserPosition();
+    function setPoint(period) {
+      return getUserPosition(period);
     };
 
-    function getUserPosition() {
+    function getUserPosition(period) {
       var options = { timeout: 10000, enableHighAccuracy: true };
 
       return $cordovaGeolocation.getCurrentPosition(options)
         .then(onSuccess, onFail);
 
       function onSuccess(position) {
-        return savePoint(position);
+        return savePoint(position, period);
       };
 
       function onFail(error) {
@@ -31,9 +31,10 @@
       };
     };
 
-    function savePoint(position) {
+    function savePoint(position, period) {
       var point = {
-        'latitude': position.coords.latitude,
+        'kind':      period.index,
+        'latitude':  position.coords.latitude,
         'longitude': position.coords.longitude
       };
 

@@ -1,5 +1,6 @@
 (function() {
   angular.module('app.core', [
+    'angularMoment',
     'ngTouch',
     'ngSanitize',
     'ngMessages',

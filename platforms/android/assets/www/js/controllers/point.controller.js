@@ -3,9 +3,9 @@
     .module("app.controllers")
     .controller("pointCtrl", pointCtrl);
 
-  pointCtrl.$inject = ["navbarService", "pointService", "pointValidator", "$auth", "$state", "$rootScope", "toastr"];
+  pointCtrl.$inject = ["navbarService", "pointService", "pointValidator", "$auth", "$state", "$rootScope", "toastr", "config"];
 
-  function pointCtrl(navbarService, pointService, pointValidator, $auth, $state, $rootScope, toastr) {
+  function pointCtrl(navbarService, pointService, pointValidator, $auth, $state, $rootScope, toastr, config) {
     var vm          = this;
     var breakpoints = ["start_at", "interval_start", "interval_finish", "finish_at"];
 
@@ -22,6 +22,7 @@
 
     function setPoint() {
       if (!vm.saving) {
+        debugger;
         if (pointValidator.validateMaximumPoints()) {
           vm.saving = true;
 
@@ -30,7 +31,7 @@
             .catch(onFail)
             .finally(unlockSaving);
         } else {
-          toastr.error("O limite de marcações diárias já foi atingido (4/4)")
+          toastr.error("O limite de marcações diárias já foi atingido (" + config.maxPoints + ")")
         }
       }
     };
@@ -62,7 +63,7 @@
     function loadNextPoint() {
       vm.nextPoint = undefined;
 
-      var now    = new Date("07/08/2016 05:57");
+      var now    = new Date("22/09/2016 05:57");
       var hour   = now.getHours();
       var minute = now.getMinutes();
 
@@ -78,7 +79,7 @@
         if ((hour < breakpointHour) || ( hour === breakpointHour && (minute < breakpointMinute))) {
           updateDisplayedTime(time);
 
-          localStorage['currentBreakpoint'] = name;
+          localStorage['breakpoint'] = name;
 
           break;
         }
@@ -86,10 +87,11 @@
     };
 
     function nextPoint() {
-      var index = breakpoints.indexOf(localStorage['currentBreakpoint']) + 1;
+      var index = breakpoints.indexOf(localStorage['breakpoint']) + 1;
 
       if (index < breakpoints.length) {
-        localStorage['currentBreakpoint']  = breakpoints[index];
+        localStorage['breakpoint']      = breakpoints[index];
+        localStorage['breakpointIndex'] = index;
         var nextBreakpoint = localStorage[breakpoints[index]];
 
         updateDisplayedTime(new Date(nextBreakpoint));

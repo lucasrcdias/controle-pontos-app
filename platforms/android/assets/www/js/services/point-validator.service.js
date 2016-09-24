@@ -3,7 +3,9 @@
     .module("app.services")
     .factory("pointValidator", pointValidator);
 
-  function pointValidator() {
+  pointValidator.$inject = ["config"];
+
+  function pointValidator(config) {
     var service = {
       validateMaximumPoints: validateMaximumPoints,
       incrementPoint: incrementPoint
@@ -12,6 +14,7 @@
     return service;
 
     function validateMaximumPoints() {
+      debugger;
       var today       = new Date();
       var lastDate    = new Date(localStorage["last_date"]);
       var pointsCount = parseInt(localStorage["points_count"]);
@@ -26,7 +29,7 @@
         localStorage["points_count"] = 0;
       }
 
-      return pointsCount < 4;
+      return pointsCount < config.maxPoints;
     };
 
     function incrementPoint(amount) {

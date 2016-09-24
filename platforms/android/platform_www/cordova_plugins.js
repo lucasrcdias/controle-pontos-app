@@ -46,8 +46,8 @@ module.exports.metadata =
 {
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-geolocation": "2.2.0",
-    "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-whitelist": "1.2.2",
+    "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-inappbrowser": "1.4.0"
 };
 // BOTTOM OF METADATA

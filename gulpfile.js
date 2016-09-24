@@ -33,9 +33,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('browser-sync', function() {
-  var files = [
-    buildPaths.build
-  ];
+  var files = [buildPaths.build];
 
   browserSync.init(files, {
     port: '9000',

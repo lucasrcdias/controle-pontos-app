@@ -31,11 +31,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         },
                         {
@@ -54,10 +54,10 @@
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "io.imperium"
         },
-        "cordova-plugin-network-information": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.imperium"
         },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "io.imperium"
         },
         "cordova-plugin-inappbrowser": {
@@ -110,8 +110,8 @@
     "plugin_metadata": {
         "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-geolocation": "2.2.0",
-        "cordova-plugin-network-information": "1.2.1",
         "cordova-plugin-whitelist": "1.2.2",
+        "cordova-plugin-network-information": "1.2.1",
         "cordova-plugin-inappbrowser": "1.4.0"
     }
 }
