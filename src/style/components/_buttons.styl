@@ -2,40 +2,14 @@ button:focus,
 button:active
   outline: none
 
-.btn-main-action
-  padding: 0
-  width: 80px
-  height: 80px
-  border: none
-  position: fixed
-  right: rem(30px)
-  bottom: rem(30px)
-  border-radius: 50%
-  text-align: center
-  box-shadow: 0 1px 10px rgba(0,0,0,.1)
-
-  &.waiting
-    background: $primary-color
-
-  &.loading
-    background: $secondary-color
-
-  &.done
-    background: $secondary-success-color
-
-  .btn-icon
-    color: #fff
-    line-height: 80px
-    font-size: rem(35px)
-
 .btn-primary
   width: 100%
   color: #fff
   border: none
   font-weight: 600
   text-align: center
-  font-size: rem(18px)
-  padding: rem(20px 0)
+  font-size: 18px
+  padding: 20px 0
   background: $secondary-color
   border-radius: $default-border-radius
   box-shadow: 0px 4px 10px rgba(0,0,0,.1)
@@ -45,4 +19,15 @@ button:active
     background: #ccc
 
   i
-    margin-left: rem(10px)
+    margin-left: 10px
+
+.btn-main-action
+  left: 20px
+  right: 20px
+  bottom: 30px
+  border: none
+  border-radius: $default-border-radius
+  position: fixed
+  text-align: center
+  width: calc(unquote('100% - 40px'))
+  box-shadow: 0 1px 10px rgba(0,0,0,.1)
