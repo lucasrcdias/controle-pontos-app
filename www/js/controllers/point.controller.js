@@ -3,9 +3,9 @@
     .module("app.controllers")
     .controller("pointCtrl", pointCtrl);
 
-  pointCtrl.$inject = ["navbarService", "pointService", "pointValidator", "$auth", "$state", "$rootScope", "toastr", "config", "moment"];
+  pointCtrl.$inject = ["navbarService", "pointService", "periodService", "pointValidator", "$auth", "$state", "$rootScope", "toastr", "config", "moment"];
 
-  function pointCtrl(navbarService, pointService, pointValidator, $auth, $state, $rootScope, toastr, config, moment) {
+  function pointCtrl(navbarService, pointService, periodService, pointValidator, $auth, $state, $rootScope, toastr, config, moment) {
     var vm = this;
 
     vm.saving         = false;
@@ -16,7 +16,7 @@
     vm.setPoint = setPoint;
 
     verifyUserAuthentication();
-    updateNextPoint();
+    loadCurrentPoint();
 
     $rootScope.$on("networkChanged", updateConnectionStatus);
 
@@ -26,7 +26,7 @@
       if (pointValidator.validateMaximumPoints()) {
         vm.saving = true;
 
-        pointService.setPoint(vm.period)
+        return pointService.savePoint(vm.period)
           .then(onSuccess)
           .catch(onFail)
           .finally(unlockSaving);
@@ -38,7 +38,7 @@
 
     function onSuccess(response) {
       pointValidator.incrementPoint();
-      nextPoint();
+      getNextPoint();
 
       toastr.success("Ponto marcado com sucesso!");
     };
@@ -54,7 +54,7 @@
     function verifyUserAuthentication() {
       if ($auth.isAuthenticated()) {
         vm.authenticating = false;
-        vm.periods        = JSON.parse(localStorage["periods"]).periods;
+        vm.periods        = periodService.retrieveUserPeriod();
 
         navbarService.updateAuthState(true);
       } else {
@@ -62,31 +62,20 @@
       }
     };
 
-    function updateNextPoint() {
-      vm.point = undefined;
+    function loadCurrentPoint() {
+      // Return if user already saved all daily points
+      if (!pointValidator.validateMaximumPoints()) { return; }
 
-      var now    = new Date("09/24/2016 08:57");
-      var hour   = now.getHours();
-      var minute = now.getMinutes();
+      var index = localStorage["points_count"] ? parseInt(localStorage["points_count"]) : 0;
 
+      vm.point  = undefined;
       vm.period = undefined;
 
-      angular.forEach(vm.periods, function (period) {
-        if (angular.isDefined(vm.period)) { return; }
-
-        var periodTime   = moment.utc(period.time);
-        var periodHour   = periodTime.hour();
-        var periodMinute = periodTime.minute();
-
-        if ((hour < periodHour) || ( hour === periodHour && (minute < periodMinute))) {
-          vm.period = period;
-          updateDisplayedTime(periodTime);
-        }
-      });
+      getPointByIndex(index);
     };
 
     // Get next point after saving
-    function nextPoint() {
+    function getNextPoint() {
       var index = vm.period.index;
 
       if (index === config.maxPoints) {
@@ -96,7 +85,12 @@
 
       vm.period = undefined;
 
+      getPointByIndex(index);
+    };
+
+    function getPointByIndex(index) {
       angular.forEach(vm.periods, function (period) {
+        // Skip if already found the next point
         if (angular.isDefined(vm.period)) { return; }
 
         if (period.index === index + 1) {
@@ -104,7 +98,7 @@
           updateDisplayedTime(moment.utc(period.time));
         }
       });
-    };
+    }
 
     function updateDisplayedTime(time) {
       var hour    = time.hour();
