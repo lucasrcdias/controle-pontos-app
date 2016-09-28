@@ -15,7 +15,7 @@
 
     function validateMaximumPoints() {
       var today       = new Date();
-      var lastDate    = localStorage["last_date"]    ? new Date(localStorage["last_date"])    : new Date();
+      var lastDate    = localStorage["last_date"]    ? new Date(localStorage["last_date"])    : new Date(getYesterday());
       var pointsCount = localStorage["points_count"] ? parseInt(localStorage["points_count"]) : 0;
 
       today.setHours(0, 0, 0, 0);
@@ -38,6 +38,12 @@
       localStorage["points_count"] = count + amount;
 
       return localStorage["points_count"];
+    };
+
+    function getYesterday() {
+      var date = new Date();
+
+      return date.setDate(date.getDate() - 1);
     };
   };
 })();
