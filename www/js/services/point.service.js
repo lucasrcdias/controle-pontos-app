@@ -7,48 +7,36 @@
 
   function pointService($q, $http, $cordovaGeolocation, config) {
     var service = {
-      setPoint: setPoint
+      savePoint: savePoint
     };
 
     return service;
 
-    function setPoint(period) {
-      return getUserPosition(period);
-    };
-
-    function getUserPosition(period) {
+    function savePoint(period) {
       var options = { timeout: 10000, enableHighAccuracy: true };
+      var point   = {
+        'kind': period.index
+      };
 
       return $cordovaGeolocation.getCurrentPosition(options)
         .then(onSuccess, onFail);
 
       function onSuccess(position) {
-        return savePoint(position, period);
-      };
+        point.latitude  = position.coords.latitude;
+        point.longitude = position.coords.longitude;
 
-      function onFail(error) {
-        return error;
-      };
+        return $http.post(config.apiBase + "/points", { 'point': point })
+          .then(pointSaved)
+          .catch(onFail);
+      }
+    }
+
+    function pointSaved(response) {
+      return response;
     };
 
-    function savePoint(position, period) {
-      var point = {
-        'kind':      period.index,
-        'latitude':  position.coords.latitude,
-        'longitude': position.coords.longitude
-      };
-
-      return $http.post(config.apiBase + "/points", { 'point': point })
-        .then(onSuccess)
-        .catch(onFail);
-
-      function onSuccess(response) {
-        return response;
-      };
-
-      function onFail(error) {
-        return $q.reject(error);
-      };
+    function onFail(error) {
+      return $q.reject(error);
     };
   };
 })();
