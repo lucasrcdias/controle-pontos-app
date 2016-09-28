@@ -11,8 +11,8 @@
     <h3 ng-hide="vm.connected">Sem conexão com a internet...</h3>
   </div>
 </div>
-<button class="btn-main-action waiting" ng-click="vm.setPoint()" ng-if="vm.point || vm.connected">
-  <i class="btn-icon">+</i>
+<button class="btn-primary btn-main-action" ng-click="vm.setPoint()" ng-if="vm.point && vm.connected">
+  {{ "Marcar " + vm.period.label }}
 </button>
 
 <section class="in-progress" ng-show="vm.authenticating || vm.saving">
