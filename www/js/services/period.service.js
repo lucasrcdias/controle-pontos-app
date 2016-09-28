@@ -7,12 +7,21 @@
 
   function periodService($q, $http, config) {
     var service = {
-      loadPeriod: loadPeriod
+      storeUserPeriod: storeUserPeriod,
+      retrieveUserPeriod: retrieveUserPeriod
     };
 
     return service;
 
-    function loadPeriod() {
+    function retrieveUserPeriod() {
+      if (localStorage["periods"]) {
+        return JSON.parse(localStorage["periods"]).periods;
+      }
+
+      return storeUserPeriod();
+    };
+
+    function storeUserPeriod() {
       return $http.get(config.apiBase + "/periods")
         .then(onSuccess)
         .catch(onFail);
@@ -20,7 +29,7 @@
 
     function onSuccess(response) {
       localStorage["periods"] = JSON.stringify(response.data.period);
-      return response;
+      return response.periods;
     };
 
     function onFail(error) {

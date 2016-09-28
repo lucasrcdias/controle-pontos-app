@@ -28,7 +28,7 @@
 
     function onSuccess(response) {
       navbarService.updateAuthState(true);
-      periodService.loadPeriod();
+      periodService.storeUserPeriod();
       $state.go("point");
     };
 
