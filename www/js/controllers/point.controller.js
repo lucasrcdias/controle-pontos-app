@@ -53,6 +53,9 @@
 
     function verifyUserAuthentication() {
       if ($auth.isAuthenticated()) {
+        // Updates user period on start
+        periodService.storeUserPeriod();
+
         vm.authenticating = false;
         vm.periods        = periodService.retrieveUserPeriod();
 
