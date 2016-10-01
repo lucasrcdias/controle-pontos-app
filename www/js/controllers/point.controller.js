@@ -15,8 +15,7 @@
 
     vm.setPoint = setPoint;
 
-    verifyUserAuthentication();
-    loadCurrentPoint();
+    loadScreenData();
 
     $rootScope.$on("networkChanged", updateConnectionStatus);
 
@@ -51,14 +50,19 @@
       vm.saving = false;
     };
 
-    function verifyUserAuthentication() {
+    function loadScreenData() {
       if ($auth.isAuthenticated()) {
         // Updates user period on start
-        periodService.storeUserPeriod();
+        periodService.storeUserPeriod()
+          .then(function(response) {
+            vm.periods = response.periods;
+          })
+          .catch(function(error) {
+            vm.periods = periodService.retrieveUserPeriod();
+          })
+          .finally(loadCurrentPoint);
 
         vm.authenticating = false;
-        vm.periods        = periodService.retrieveUserPeriod();
-
         navbarService.updateAuthState(true);
       } else {
         $state.go("auth");
@@ -77,7 +81,6 @@
       getPointByIndex(index);
     };
 
-    // Get next point after saving
     function getNextPoint() {
       var index = vm.period.index;
 
@@ -92,6 +95,8 @@
     };
 
     function getPointByIndex(index) {
+      if (!vm.periods) { return; }
+
       angular.forEach(vm.periods, function (period) {
         // Skip if already found the next point
         if (angular.isDefined(vm.period)) { return; }
@@ -101,7 +106,7 @@
           updateDisplayedTime(moment.utc(period.time));
         }
       });
-    }
+    };
 
     function updateDisplayedTime(time) {
       var hour    = time.hour();
