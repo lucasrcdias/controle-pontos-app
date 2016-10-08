@@ -29,7 +29,7 @@
 
     function onSuccess(response) {
       localStorage["periods"] = JSON.stringify(response.data.period);
-      return response.periods;
+      return response.data.period;
     };
 
     function onFail(error) {
